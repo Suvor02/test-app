@@ -1,0 +1,32 @@
+.post {
+    background-color: aliceblue;
+    display: flex;
+    width: 99%;
+    height: 100%;
+    padding: 5px;
+    flex: 0 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+span{
+    text-align: center;
+    padding: 3px;
+}
+.divId{
+    flex: 0 1 10%;
+
+}
+.divTitle{
+    flex: 0 1 35%;
+    height: 100%;
+    text-align: left;
+}
+.divBody{
+    flex: 0 1 55%;
+
+}
+button a {
+    text-decoration: none;
+    color: black;
+}
