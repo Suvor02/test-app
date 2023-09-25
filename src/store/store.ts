@@ -1,7 +1,6 @@
 import {AnyAction, combineReducers, configureStore, ThunkAction, ThunkDispatch} from "@reduxjs/toolkit";
+
 import {postsReducer} from "./reducer.ts";
-
-
 
 const rootReducer = combineReducers({
     todos: postsReducer

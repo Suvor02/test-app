@@ -1,7 +1,9 @@
-import {PostType} from "../../../store/reducer.ts";
-import s from "./post.module.css"
 import {useState} from "react";
 import {NavLink} from "react-router-dom";
+
+import {PostType} from "../../../store/reducer.ts";
+
+import s from "./post.module.css"
 
 type PostPropsType = PostType & {
     getInfo: (id: number, post: PostType) => void
@@ -15,6 +17,7 @@ const Post = (p: PostPropsType) => {
     const handleMouseEnter = () => {
         // при навидении
         setShowButton(true);
+        console.log("яяяя")
     };
 
     const handleMouseLeave = () => {
@@ -30,14 +33,18 @@ const Post = (p: PostPropsType) => {
         <span className={s.divBody}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}>
-            {(p.body).length > 40 ? p.body.slice(0, 40) + "..." : (p.body)}
-            {showButton &&
-                <button onClick={getInfoPost}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}>
-                    <NavLink to={"/info"}> смотреть</NavLink>
-                </button>}
+            {/*{(p.body).length > 40 ? p.body.slice(0, 40) + "..." : (p.body)}*/}
+            {p.body}
+
         </span>
+        {/*если навести на спан курсор - будет кнопка*/}
+        {showButton &&
+            <button className={s.button}
+                    onClick={getInfoPost}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}>
+                <NavLink to={"/info"}> смотреть</NavLink>
+            </button>}
     </div>
 }
 

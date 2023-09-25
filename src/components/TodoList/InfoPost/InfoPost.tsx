@@ -1,11 +1,13 @@
-import s from "../todoList.module.css";
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
+
 import {AppRootStateType} from "../../../store/store.ts";
+
 import {PostType} from "../../../store/reducer.ts";
 
+import s from "../todoList.module.css";
 
-const InfoPost =()=>{
+const InfoPost = () => {
     // здесь отоброжается информация поста
     const post = useSelector<AppRootStateType, PostType>(state => state.todos.info)
     return <div>
