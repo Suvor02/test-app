@@ -57,6 +57,7 @@ if ( e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight) < 100 
             <div className={s.header}>
                 List of posts
             </div>
+            <div>111</div>
             <div className={s.divPosts} id={"block-id-posts"}>
                     {/*    здесть будет список постов*/}
                     {posts.map((p, index) => {
