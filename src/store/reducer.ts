@@ -61,14 +61,12 @@ export const getPostsTS = (page: number): AppThunk => {
                 dispatch(postsAction.setTotalCount({count: res.headers["x-total-count"]}))
                 // переключаем следующую страницу
                 dispatch(postsAction.setCurrentPage({page: 1}))
-                console.log(page)
             })
             .catch((e) => {
                 console.log(e.message)
             })
             .finally(() => {
                 dispatch(postsAction.setFetching({f: false}))
-                console.log("getPosts")
             })
     }
 }

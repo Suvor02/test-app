@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {LegacyRef,  useEffect, useRef} from "react";
 
 import {AppDispatch, AppRootStateType} from "../../store/store.ts";
 
@@ -9,6 +9,8 @@ import Post from "./Post/Post.tsx";
 import s from "./todoList.module.css"
 
 const TodoList = () => {
+    const ref = useRef() as LegacyRef<HTMLDivElement>
+
     // получаем массив постов для отрисовки
     const posts = useSelector<AppRootStateType, PostType[]>(state => state.todos.posts)
     // количество постов
@@ -29,6 +31,7 @@ const TodoList = () => {
     useEffect(() => {
         // Получаем ссылку на блок, у которого нужно отслеживать событие скролла
         const block = document.getElementById('block-id-posts') as HTMLElement
+        // const block = ref?.current
         // вешаем слушателя
         block.addEventListener("scroll", scrollHandler)
         //
@@ -58,7 +61,7 @@ const TodoList = () => {
             <div className={s.header}>
                 List of posts
             </div>
-            <div className={s.divPosts} id={"block-id-posts"}>
+            <div className={s.divPosts} id={"block-id-posts"} ref={ref}>
                 {/*    здесть будет список постов*/}
                 {posts.map((p, index) => {
                     return <div key={index} className={s.posts}>

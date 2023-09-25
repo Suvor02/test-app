@@ -17,7 +17,6 @@ const Post = (p: PostPropsType) => {
     const handleMouseEnter = () => {
         // при навидении
         setShowButton(true);
-        console.log("яяяя")
     };
 
     const handleMouseLeave = () => {
