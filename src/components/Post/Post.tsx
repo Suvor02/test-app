@@ -27,24 +27,24 @@ const Post = (p: PostPropsType) => {
 
     return <div className={s.post}>
         {/* здесь номер поста*/}
-        <span className={s.divId}>{p.id} </span>
-        <span className={s.divTitle}>{p.title}</span>
+        <div className={s.divId}>{p.id} </div>
+        <div className={s.divTitle}>{p.title}</div>
         {/* здесь текст поста*/}
-        <span className={s.divBody}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}>
-            {/*{(p.body).length > 40 ? p.body.slice(0, 40) + "..." : (p.body)}*/}
-            {p.body}
+        <div className={s.divBody}
+             onMouseEnter={handleMouseEnter}
+             onMouseLeave={handleMouseLeave}>
 
-        </span>
-        {/*если навести на спан курсор - будет кнопка*/}
-        {showButton &&
-            <button className={s.button}
-                    onClick={getInfoPost}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}>
-                <NavLink to={"/info"}> смотреть</NavLink>
+            <div className={s.bodyText}>
+                {p.body}
+            </div>
+            {showButton && <button className={s.button}
+                     onClick={getInfoPost}
+                     onMouseEnter={handleMouseEnter}
+                     onMouseLeave={handleMouseLeave}>
+                <NavLink to={"/info"}>смотреть</NavLink>
             </button>}
+            </div>
+        {/*</div>*/}
     </div>
 }
 
