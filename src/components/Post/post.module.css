@@ -1,45 +1,53 @@
 .post {
-    height: 34px;
-    background-color: aliceblue;
     display: flex;
-    width: 98.7%;
-    /*height: 100%;*/
-    padding: 5px;
-    flex: 0 1 auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    gap: 4px;
+    /*height: 2em;*/
 
+    /*height: 34px;*/
+    /*background-color: aliceblue;*/
+    /*display: flex;*/
+    padding: 5px;
+    /*gap: 6px;*/
 }
-span{
-    text-align: center;
-    text-overflow: ellipsis;
+
+.divId{
+    flex: 0 0 5%;
+}
+.divTitle{
+    flex: 0 0 30%;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+    /*!*white-space: nowrap;*!*/
+    /*overflow: hidden;*/
     /*display: -webkit-box;*/
     /*-webkit-line-clamp: 2;*/
     /*-webkit-box-orient: vertical;*/
-    line-height:18px
-}
-.divId{
-    flex: 0 1 10%;
-
-}
-.divTitle{
-    flex: 0 1 35%;
-    height: 100%;
-    text-align: left;
 }
 .divBody{
-
-    flex: 0 1 55%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: flex;
+    gap: 1em;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*gap: 6px;*/
 }
-button a {
-    text-decoration: none;
-    color: black;
+
+.bodyText{
+    flex: 0 0 80%;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
 }
 .button{
+    /*height: 100%;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*width: 70px;*/
+    /*height: 30px;*/
 
-height: 30px;
-    margin: 0 auto;
-    display: block;
+    /*margin: 0 auto;*/
+    /*display: block;*/
 }
