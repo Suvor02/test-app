@@ -1,15 +1,16 @@
 import {useDispatch, useSelector} from "react-redux";
-import {LegacyRef,  useEffect, useRef} from "react";
+import { useEffect, useRef} from "react";
 
 import {AppDispatch, AppRootStateType} from "../../store/store.ts";
 
 import {getPostsTS, infoTS, postsAction, PostType} from "../../store/reducer.ts";
-import Post from "./Post/Post.tsx";
+
 
 import s from "./todoList.module.css"
+import Post from "../Post/Post.tsx";
 
 const TodoList = () => {
-    const ref = useRef() as LegacyRef<HTMLDivElement>
+    const ref = useRef<HTMLDivElement |null>(null)
 
     // получаем массив постов для отрисовки
     const posts = useSelector<AppRootStateType, PostType[]>(state => state.todos.posts)
@@ -29,31 +30,39 @@ const TodoList = () => {
     }, [dispatch,fetching,page])
 //     выполняем асинхронную операцию
     useEffect(() => {
+        const scrollHandler = (e: Event) => {
+            const {scrollHeight, scrollTop, clientHeight} = e.target as HTMLElement
+
+
+            // if (e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight) < 100 &&
+            if (scrollHeight - (scrollTop + clientHeight) < 100 &&
+
+                posts.length < totalCount) {
+                dispatch(postsAction.setFetching({f: true}))
+            }
+        }
+
         // Получаем ссылку на блок, у которого нужно отслеживать событие скролла
-        const block = document.getElementById('block-id-posts') as HTMLElement
-        // const block = ref?.current
+        const block = ref.current
         // вешаем слушателя
-        block.addEventListener("scroll", scrollHandler)
+        block?.addEventListener("scroll", scrollHandler)
         //
         return function () {
             // зачищаем за собой
-            block.removeEventListener("scroll", scrollHandler)
+            block?.removeEventListener("scroll", scrollHandler)
         }
-    }, [])
+
+
+
+
+    }, [dispatch, posts.length, totalCount])
     const getInfo = (id: number, post: PostType) => {
         // чтобы не делоть доп запрос на сервер
         const thunk = infoTS(id, post)
         dispatch(thunk)
     }
 
-    const scrollHandler = (e: any) => {
-        // const {scrollHeight, scrollTop, clientHeight} = e.target as HTMLElement
-        if (e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight) < 100 &&
-            posts.length < totalCount) {
-            dispatch(postsAction.setFetching({f: true}))
-        }
 
-    }
 
     return (
         // коробка с постами
@@ -61,7 +70,7 @@ const TodoList = () => {
             <div className={s.header}>
                 List of posts
             </div>
-            <div className={s.divPosts} id={"block-id-posts"} ref={ref}>
+            <div className={s.divPosts} ref={ref}>
                 {/*    здесть будет список постов*/}
                 {posts.map((p, index) => {
                     return <div key={index} className={s.posts}>

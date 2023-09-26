@@ -3,7 +3,8 @@ import TodoList from "./components/TodoList/TodoList.tsx";
 import {Provider} from "react-redux";
 import {store} from "./store/store.ts";
 import {Route, Routes} from "react-router-dom";
-import InfoPost from "./components/TodoList/InfoPost/InfoPost.tsx";
+import InfoPost from "./components/InfoPost/InfoPost.tsx";
+
 
 function App() {
 
